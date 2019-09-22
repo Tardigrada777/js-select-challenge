@@ -1,0 +1,16 @@
+{
+  "name": "js-select-challenge",
+  "version": "1.0.0",
+  "description": "js-select-challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "clear && parcel index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^1.12.3",
+    "sass": "^1.22.12"
+  }
+}

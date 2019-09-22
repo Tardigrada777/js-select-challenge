@@ -1,0 +1,161 @@
+.select {
+  min-width: 300px;
+  position: relative;
+  display: inline-block;
+
+  &__input {
+    width: 100%;
+    background-color: #fff;
+    height: 35px;
+    cursor: pointer;
+    border-bottom: 2px solid lighten(black, 70);
+
+    font-size: 20px;
+
+    transition: all 0.2s ease;
+    &:hover {
+      border-bottom: 2px solid lighten(black, 10);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+
+    font-weight: bold;
+    font-size: 18px;
+
+    transition: all 0.3s ease;
+    transform-origin: left top;
+    &--up {
+      transform: scale(0.8);
+      top: -20px;
+    }
+  }
+  &__arrow {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+
+    transform-origin: top center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      border: 6px solid transparent;
+      border-top: 6px solid black;
+    }
+
+    &--turned {
+      animation: turnUp 0.3s ease forwards;
+    }
+  }
+}
+
+.selectList {
+  position: absolute;
+  top: 100%;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.4);
+
+  transform-origin: center center;
+  transform: scale(0);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px 0px;
+
+  max-height: 200px;
+
+  overflow-y: auto;
+
+  &--open {
+    animation: scaleUp 0.2s linear forwards;
+  }
+  &--hidden {
+    animation: scaleDown 0.2s linear forwards;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &__item {
+    list-style-type: none;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+
+    &:hover {
+      background-color: rgb(211, 211, 211);
+      cursor: pointer;
+    }
+
+    &--active {
+      color: rgb(30, 30, 172);
+      background-color: rgb(211, 211, 211);
+    }
+  }
+
+  @keyframes turnUp {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes scaleUp {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes scaleDown {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0);
+    }
+  }
+}
+/*loader styles*/
+.lds-dual-ring {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  border-color: black transparent black transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
